@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+# Keep generated Python bytecode out of commits, even if a local compile/test
+# command created caches right before committing.
+"$ROOT_DIR/scripts/clean_generated.sh" >/dev/null

@@ -22,6 +22,8 @@ The original list contains 87 entries. `resto` appears twice, so it is tracked o
 - `scripts/bootstrap.sh`: installs baseline Mac development dependencies.
 - `scripts/link_dotfiles.sh`: links tracked dotfiles into `$HOME` with backups.
 - `scripts/verify_environment.sh`: checks whether the core setup is ready.
+- `scripts/clean_generated.sh`: removes generated Python bytecode and cache directories.
+- `scripts/install_git_hooks.sh`: enables tracked repo hooks, including generated-file cleanup before commits.
 - `scripts/create_issues.py`: creates GitHub issues from `data/*.tsv`.
 - `data/tools.tsv`: canonical tool learning list and weekly schedule.
 - `data/environment_tasks.tsv`: portable environment setup tasks.

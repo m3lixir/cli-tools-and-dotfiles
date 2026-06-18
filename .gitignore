@@ -5,7 +5,14 @@
 .env.*
 !.env.example
 
+# Python generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
 # Keep generated learning artifacts out by default, but allow placeholders.
 artifacts/*
 !artifacts/.gitkeep
-

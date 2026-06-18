@@ -16,10 +16,16 @@ TOOLS_FILE = ROOT / "data" / "tools.tsv"
 ENV_FILE = ROOT / "data" / "environment_tasks.tsv"
 
 
-def run_gh(args: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+def run_gh(
+    args: list[str],
+    *,
+    check: bool = True,
+    input_text: str | None = None,
+) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         ["gh", *args],
         check=check,
+        input=input_text,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -61,7 +67,7 @@ def ensure_label(repo: str, name: str, color: str, description: str, dry_run: bo
         result.check_returncode()
 
 
-def issue_exists(repo: str, title: str) -> bool:
+def find_issue(repo: str, title: str) -> dict[str, object] | None:
     result = run_gh(
         [
             "issue",
@@ -73,13 +79,20 @@ def issue_exists(repo: str, title: str) -> bool:
             "--search",
             f'in:title "{title}"',
             "--json",
-            "title",
+            "number,title,body",
             "--limit",
             "100",
         ]
     )
     issues = json.loads(result.stdout or "[]")
-    return any(issue.get("title") == title for issue in issues)
+    for issue in issues:
+        if issue.get("title") == title:
+            return issue
+    return None
+
+
+def issue_exists(repo: str, title: str) -> bool:
+    return find_issue(repo, title) is not None
 
 
 def create_issue(repo: str, title: str, body: str, labels: list[str], dry_run: bool) -> None:
@@ -108,15 +121,102 @@ def create_issue(repo: str, title: str, body: str, labels: list[str], dry_run: b
     print(f"created: {title}")
 
 
+def terminal_trove_source_line(source_url: str) -> str:
+    return f"- Source: [Terminal Trove]({source_url})"
+
+
+def insert_or_replace_source_line(body: str, source_url: str) -> str:
+    source_line = terminal_trove_source_line(source_url)
+    lines = body.splitlines()
+
+    # Preserve every other part of the issue body, including checked boxes and
+    # notes, while keeping the source link idempotent.
+    for index, line in enumerate(lines):
+        if line.startswith("- Source:"):
+            lines[index] = source_line
+            return "\n".join(lines) + "\n"
+
+    for index, line in enumerate(lines):
+        if line.startswith("- Description:"):
+            lines.insert(index + 1, source_line)
+            return "\n".join(lines) + "\n"
+
+    for index, line in enumerate(lines):
+        if line == "## Checklist":
+            lines.insert(index, "")
+            lines.insert(index, source_line)
+            return "\n".join(lines) + "\n"
+
+    lines.append(source_line)
+    return "\n".join(lines) + "\n"
+
+
+def sync_source_links(repo: str, tools: list[dict[str, str]], dry_run: bool) -> int:
+    """Sync Terminal Trove links into existing learning issues without recreating them."""
+
+    missing = 0
+    updated = 0
+    unchanged = 0
+
+    for row in tools:
+        source_url = row.get("source_url", "").strip()
+        if not source_url:
+            print(f"missing source_url: {row['tool']}", file=sys.stderr)
+            missing += 1
+            continue
+
+        title = f"Learn: {row['tool']}"
+        issue = find_issue(repo, title)
+        if issue is None:
+            print(f"missing issue: {title}", file=sys.stderr)
+            missing += 1
+            continue
+
+        body = str(issue.get("body") or "")
+        new_body = insert_or_replace_source_line(body, source_url)
+        if new_body == body:
+            unchanged += 1
+            print(f"unchanged: #{issue['number']} {title}")
+            continue
+
+        updated += 1
+        if dry_run:
+            print(f"would update: #{issue['number']} {title}")
+            continue
+
+        run_gh(
+            [
+                "issue",
+                "edit",
+                str(issue["number"]),
+                "--repo",
+                repo,
+                "--body-file",
+                "-",
+            ],
+            input_text=new_body,
+        )
+        print(f"updated: #{issue['number']} {title}")
+
+    print(f"source link sync complete: {updated} updated, {unchanged} unchanged, {missing} missing")
+    return 1 if missing else 0
+
+
 def tool_body(row: dict[str, str]) -> str:
     tool = row["tool"]
+    source_line = ""
+    source_url = row.get("source_url", "").strip()
+    if source_url:
+        # Keep new issues consistent with source links synced onto existing ones.
+        source_line = f"\n- Source: [Terminal Trove]({source_url})"
+
     return f"""## Goal
 Build practical familiarity with `{tool}` and decide whether it belongs in the portable dev environment.
 
 ## Context
 - Category: `{row["category"]}`
 - Scheduled: week {row["week"]}, {row["dates"]}
-- Description: {row["description"]}
+- Description: {row["description"]}{source_line}
 
 ## Checklist
 - [ ] Confirm the current upstream project, docs, and install path.
@@ -149,10 +249,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", default="m3lixir/cli-tools-and-dotfiles")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--sync-source-links",
+        action="store_true",
+        help="Insert or update Terminal Trove source links on existing learning issues.",
+    )
     args = parser.parse_args()
 
     tools = load_rows(TOOLS_FILE)
     environment_tasks = load_rows(ENV_FILE)
+
+    if args.sync_source_links:
+        return sync_source_links(args.repo, tools, args.dry_run)
 
     labels = {
         "learning": ("0e8a16", "Tool learning task"),

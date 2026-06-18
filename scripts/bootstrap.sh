@@ -12,5 +12,9 @@ brew bundle --file "$ROOT_DIR/Brewfile"
 
 mkdir -p "$HOME/src" "$HOME/.local/bin"
 
-echo "Bootstrap complete. Run ./scripts/link_dotfiles.sh next."
+if [ -d "$ROOT_DIR/.git" ]; then
+  # Enable tracked repo hooks when bootstrap is run from a full clone.
+  "$ROOT_DIR/scripts/install_git_hooks.sh"
+fi
 
+echo "Bootstrap complete. Run ./scripts/link_dotfiles.sh next."
