@@ -1,0 +1,88 @@
+tool	category	week	dates	description
+codex	ai-cli	1	Jun 22-28	Lightweight coding agent that runs in your terminal from OpenAI.
+eget	installer-help	1	Jun 22-28	Easily install prebuilt binaries from GitHub.
+halp	installer-help	1	Jun 22-28	CLI tool to get help with CLI tools.
+hoard	installer-help	1	Jun 22-28	CLI command organizer for saving useful commands.
+shellcheck	installer-help	1	Jun 22-28	Static analysis tool for shell scripts.
+gitnr	git-workflow	1	Jun 22-28	CLI and TUI to generate .gitignore files using templates.
+git-cc	git-workflow	2	Jun 29-Jul 5	Git extension to help write conventional commits.
+git-cliff	git-workflow	2	Jun 29-Jul 5	Changelog generator for Git repositories.
+gistui	git-workflow	2	Jun 29-Jul 5	Terminal UI for managing GitHub Gists.
+gitsocial	git-workflow	2	Jun 29-Jul 5	Social layer for Git repositories.
+vignore	git-workflow	2	Jun 29-Jul 5	Tool to visualize ignored files.
+tiki	git-workflow	2	Jun 29-Jul 5	Markdown based git versioned documentation and issue management.
+glow	docs-markdown	3	Jul 6-12	Render Markdown on the CLI.
+frogmouth	docs-markdown	3	Jul 6-12	Markdown browser for the terminal.
+mdtt	docs-markdown	3	Jul 6-12	Markdown table editor TUI.
+kyma	docs-markdown	3	Jul 6-12	Terminal-based presentation tool with animated transitions.
+mdp	docs-markdown	3	Jul 6-12	Command-line based Markdown presentation tool.
+spiel	docs-markdown	3	Jul 6-12	Display richly-styled presentations using the terminal.
+carbon-now-cli	terminal-capture	4	Jul 13-19	Generate code images from the terminal.
+silicon	terminal-capture	4	Jul 13-19	Create beautiful images of source code.
+termframe	terminal-capture	4	Jul 13-19	Terminal output SVG screenshot tool.
+imgcat	terminal-capture	4	Jul 13-19	Display images and GIFs in the terminal.
+mcat	terminal-capture	4	Jul 13-19	Parse, convert, and preview images, videos, and Markdown in the terminal.
+vhs	terminal-capture	4	Jul 13-19	CLI home video recorder.
+t-rec	terminal-capture	4	Jul 13-19	Terminal recorder that generates animated GIF images.
+dotstate	dotfiles-files	5	Jul 20-26	Modern secure dotfile manager.
+pathos	dotfiles-files	5	Jul 20-26	Manage and edit terminal PATH variables.
+hf	dotfiles-files	5	Jul 20-26	Cross-platform hidden file library and utility.
+fat	dotfiles-files	5	Jul 20-26	Modern TUI file and archive viewer.
+gomi	dotfiles-files	5	Jul 20-26	rm replacement that can restore deleted files.
+hazelnut	dotfiles-files	5	Jul 20-26	Terminal based automated file organizer inspired by Hazel.
+blueutil-tui	macos-system	6	Jul 27-Aug 2	TUI for macOS Bluetooth devices via blueutil.
+humble-explorer	macos-system	6	Jul 27-Aug 2	Bluetooth LE scanner for the terminal.
+mole	macos-system	6	Jul 27-Aug 2	Deep clean and optimize your Mac.
+ugm	macos-system	6	Jul 27-Aug 2	TUI to view UNIX users and groups.
+micasa	macos-system	6	Jul 27-Aug 2	Terminal UI for tracking home information.
+wakey	macos-system	6	Jul 27-Aug 2	TUI for managing and waking devices using Wake-on-LAN.
+circumflex	feeds-news	7	Aug 3-9	Hacker News in your terminal.
+hackernews-tui	feeds-news	7	Aug 3-9	Terminal UI to browse Hacker News.
+hnterm	feeds-news	7	Aug 3-9	Hacker News in the terminal.
+eilmeldung	feeds-news	7	Aug 3-9	Customizable TUI RSS reader.
+rssnix	feeds-news	7	Aug 3-9	Filesystem-based RSS, Atom, and JSON feed fetcher and reader.
+rfc_reader	feeds-news	7	Aug 3-9	RFC viewer with TUI.
+nmail	messaging-comms	8	Aug 10-16	Terminal email client for Linux and macOS.
+pop	messaging-comms	8	Aug 10-16	Send emails from your terminal.
+google-workspace-cli	messaging-comms	8	Aug 10-16	CLI for Gmail, Drive, Docs, and Calendar.
+siggy	messaging-comms	8	Aug 10-16	Terminal-based Signal messenger client.
+zuse	messaging-comms	8	Aug 10-16	Minimal IRC client for the terminal.
+dealve-tui	messaging-comms	8	Aug 10-16	Browse game deals from the terminal.
+gruyere	network-api	9	Aug 17-23	View and kill listening ports.
+mtr	network-api	9	Aug 17-23	Network diagnostics tool.
+trippy	network-api	9	Aug 17-23	TUI network diagnostics tool.
+slurm	network-api	9	Aug 17-23	Realtime traffic statistics for network interfaces.
+netshow	network-api	9	Aug 17-23	Process-aware network monitoring for the terminal.
+netwatch	network-api	9	Aug 17-23	Real-time network diagnostics in the terminal.
+whosthere	network-api	10	Aug 24-30	LAN discovery tool with a modern TUI.
+quien	network-api	10	Aug 24-30	WHOIS and domain intelligence toolkit.
+wtfis	network-api	10	Aug 24-30	Passive hostname, domain, and IP lookup tool.
+mqttui	network-api	10	Aug 24-30	TUI to publish and subscribe to MQTT messages.
+resto	network-api	10	Aug 24-30	Send pretty HTTP and API requests with TUI.
+oha	network-api	10	Aug 24-30	TUI program that sends load to a web application.
+goaccess	logs-observability	11	Aug 31-Sep 6	Real-time web log analyzer and viewer.
+tailspin	logs-observability	11	Aug 31-Sep 6	Log file highlighter.
+logmerger	logs-observability	11	Aug 31-Sep 6	View multiple log files with a merged timeline.
+logria	logs-observability	11	Aug 31-Sep 6	CLI log aggregation tool.
+logss	logs-observability	11	Aug 31-Sep 6	Simple CLI for log splitting.
+mult	logs-observability	11	Aug 31-Sep 6	Run a command multiple times and compare outputs.
+cariddi	security-osint	12	Sep 7-13	Crawl URLs and scan endpoints, secrets, API keys, file extensions, and tokens.
+ffuf	security-osint	12	Sep 7-13	Fast web fuzzer.
+flawz	security-osint	12	Sep 7-13	TUI for browsing CVE security vulnerabilities.
+pillager	security-osint	12	Sep 7-13	Find sensitive information in filesystems.
+sherlock	security-osint	12	Sep 7-13	Hunt down social media accounts by username.
+threatdeck	security-osint	12	Sep 7-13	Terminal threat intelligence monitoring and alerting platform.
+sqlit	data-archives	13	Sep 14-20	User friendly TUI for SQL databases.
+papis	data-archives	13	Sep 14-20	CLI document and bibliography manager.
+octocov	data-archives	13	Sep 14-20	Toolkit for collecting code metrics.
+monolith	data-archives	13	Sep 14-20	Save complete web pages as a single HTML file.
+gallery-dl	data-archives	13	Sep 14-20	Download image galleries in the terminal.
+youtube-dl	data-archives	13	Sep 14-20	Download videos from YouTube and other video sites.
+patch-hub	dashboard-misc	wrap	Sep 21-22	TUI for lore.kernel.org.
+splashboard	dashboard-misc	wrap	Sep 21-22	Customizable terminal splash screen with plugin-based data sources.
+wtf	dashboard-misc	wrap	Sep 21-22	Personal information dashboard for the terminal.
+lumon	dashboard-misc	wrap	Sep 21-22	Mysterious terminal tool to inspect during wrap-up.
+gpterminator	ai-cli	wrap	Sep 21-22	TUI for OpenAI ChatGPT.
+elia	ai-cli	wrap	Sep 21-22	TUI ChatGPT client built with Textual.
+wut	ai-cli	wrap	Sep 21-22	CLI that explains the output of your last command.
+

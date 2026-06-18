@@ -1,0 +1,29 @@
+# Portable development environment shell defaults.
+
+export EDITOR="${EDITOR:-vim}"
+export VISUAL="${VISUAL:-$EDITOR}"
+export DEV_ENV_REPO="${DEV_ENV_REPO:-$HOME/src/cli-tools-and-dotfiles}"
+
+if [ -d "$HOME/.local/bin" ]; then
+  path=("$HOME/.local/bin" $path)
+fi
+
+if [ -d "/opt/homebrew/bin" ]; then
+  path=("/opt/homebrew/bin" $path)
+fi
+
+alias ll="ls -lah"
+alias gst="git status --short --branch"
+alias gco="git checkout"
+alias gcm="git commit"
+alias glog="git log --oneline --decorate --graph --all -n 20"
+
+toolnote() {
+  if [ -z "$1" ]; then
+    printf 'usage: toolnote <tool-name>\n' >&2
+    return 2
+  fi
+
+  mkdir -p "$DEV_ENV_REPO/notes"
+  ${EDITOR:-vim} "$DEV_ENV_REPO/notes/$1.md"
+}

@@ -1,0 +1,18 @@
+tap "homebrew/bundle"
+
+brew "git"
+brew "gh"
+brew "shellcheck"
+brew "git-cliff"
+brew "glow"
+brew "ffuf"
+brew "goaccess"
+brew "mtr"
+brew "trippy"
+brew "oha"
+brew "monolith"
+brew "gallery-dl"
+brew "blueutil"
+brew "stow"
+brew "mise"
+

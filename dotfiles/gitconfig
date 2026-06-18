@@ -1,0 +1,32 @@
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	default = current
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+
+[merge]
+	conflictStyle = zdiff3
+
+[rerere]
+	enabled = true
+
+[core]
+	excludesFile = ~/.gitignore_global
+	editor = vim
+
+[commit]
+	verbose = true
+

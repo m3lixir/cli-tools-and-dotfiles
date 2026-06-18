@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+
+# Keep generated learning artifacts out by default, but allow placeholders.
+artifacts/*
+!artifacts/.gitkeep
+
