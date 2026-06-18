@@ -25,6 +25,7 @@ The original list contains 87 entries. `resto` appears twice, so it is tracked o
 - `scripts/create_issues.py`: creates GitHub issues from `data/*.tsv`.
 - `data/tools.tsv`: canonical tool learning list and weekly schedule.
 - `data/environment_tasks.tsv`: portable environment setup tasks.
+- `docs/codex-session-2026-06-18.md`: original planning chat decisions and setup context.
 - `notes/`: per-tool and environment notes.
 - `artifacts/`: generated screenshots, recordings, exports, and experiments.
 
