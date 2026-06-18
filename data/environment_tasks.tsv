@@ -1,14 +1,14 @@
-title	week	dates	description
-Audit current machine	1	Jun 22-28	Record OS, shell, package managers, Git config, SSH keys, editor, terminal app, and language runtimes.
-Create install manifest	1	Jun 22-28	Turn baseline dependencies into a maintained Brewfile and document manual installers.
-Track shell dotfiles	2	Jun 29-Jul 5	Move reusable zsh config, aliases, functions, and PATH rules into tracked dotfiles.
-Track Git configuration	2	Jun 29-Jul 5	Track reusable Git defaults, global ignore rules, signing notes, and commit conventions.
-Create dotfile linking flow	3	Jul 6-12	Verify that scripts/link_dotfiles.sh safely backs up existing files and links tracked config.
-Create secrets policy	3	Jul 6-12	Document what never goes in Git and create examples for local env files.
-Configure language runtimes	4	Jul 13-19	Choose and document runtime managers for Node, Python, Go, Rust, or other stacks used during the project.
-Create reusable terminal profile notes	5	Jul 20-26	Document terminal app settings, fonts, shell theme, keybindings, and color choices.
-Create new-machine bootstrap test	8	Aug 10-16	Test clone plus bootstrap on a clean user account, VM, or fresh directory simulation.
-Add environment verification	10	Aug 24-30	Expand scripts/verify_environment.sh so it reports missing commands and broken links.
-Document recovery workflow	12	Sep 7-13	Write how to restore the environment after a laptop replacement or clean install.
-Final portability review	wrap	Sep 21-22	Confirm the repo can bootstrap the environment and that unfinished tools have follow-up issues.
-
+title	week	dates	description	source_url
+Audit current machine	1	Jun 22-28	Record OS, shell, package managers, Git config, SSH keys, editor, terminal app, and language runtimes.	
+Create install manifest	1	Jun 22-28	Turn baseline dependencies into a maintained Brewfile and document manual installers.	
+Create Codex config	1	Jun 22-28	Create and document a project-level Codex configuration using the official OpenAI basic config docs.	https://developers.openai.com/codex/config-basic
+Track shell dotfiles	2	Jun 29-Jul 5	Move reusable zsh config, aliases, functions, and PATH rules into tracked dotfiles.	
+Track Git configuration	2	Jun 29-Jul 5	Track reusable Git defaults, global ignore rules, signing notes, and commit conventions.	
+Create dotfile linking flow	3	Jul 6-12	Verify that scripts/link_dotfiles.sh safely backs up existing files and links tracked config.	
+Create secrets policy	3	Jul 6-12	Document what never goes in Git and create examples for local env files.	
+Configure language runtimes	4	Jul 13-19	Choose and document runtime managers for Node, Python, Go, Rust, or other stacks used during the project.	
+Create reusable terminal profile notes	5	Jul 20-26	Document terminal app settings, fonts, shell theme, keybindings, and color choices.	
+Create new-machine bootstrap test	8	Aug 10-16	Test clone plus bootstrap on a clean user account, VM, or fresh directory simulation.	
+Add environment verification	10	Aug 24-30	Expand scripts/verify_environment.sh so it reports missing commands and broken links.	
+Document recovery workflow	12	Sep 7-13	Write how to restore the environment after a laptop replacement or clean install.	
+Final portability review	wrap	Sep 21-22	Confirm the repo can bootstrap the environment and that unfinished tools have follow-up issues.	

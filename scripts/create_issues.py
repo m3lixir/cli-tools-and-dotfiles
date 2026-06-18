@@ -230,8 +230,17 @@ Build practical familiarity with `{tool}` and decide whether it belongs in the p
 
 
 def environment_body(row: dict[str, str]) -> str:
+    reference = ""
+    source_url = row.get("source_url", "").strip()
+    if source_url:
+        reference = f"""
+## Reference
+- {source_url}
+"""
+
     return f"""## Goal
 {row["description"]}
+{reference}
 
 ## Scheduled
 - Week: {row["week"]}
